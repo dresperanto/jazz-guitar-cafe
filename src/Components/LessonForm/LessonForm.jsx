@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import { db } from "../../firebase";
+import React, { Component } from 'react'
+import { db } from "../../firebase"
+import cuid from 'cuid'
 
 
 class LessonForm extends Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       startDate: '',
       title: '',
       url: '',
@@ -27,11 +29,13 @@ class LessonForm extends Component {
       timestampsInSnapshots: true
     });
     db.collection('lessons').add({
+      id: cuid(),
       title: this.state.title,
       url: this.state.url,
       description: this.state.description
     });
     this.setState({
+      id: cuid(),
       title: '',
       url: '',
       description: ''
