@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { db } from '../../firebase'
-import { Link, Route } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Lesson from '../Lesson/Lesson'
-import LessonDetail from '../LessonDetail/LessonDetail'
+
 
 class InstructorsAll extends Component {
   constructor(props) {
@@ -57,8 +57,8 @@ class InstructorsAll extends Component {
                 </button> |
 
                 <button className="ui left floated teal button">
-                  <Link style={{ color: 'white' }} to={lesson.id}>Details</Link>
-                  <Route path={"lessons/:id"} component={LessonDetail} />
+                  <Link style={{ color: 'white' }} to={`/instructors/${lesson.id}`}>Details</Link>
+
                 </button>
                 <hr />
               </div>
