@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../../firebase'
-import { Link, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom"
 import Lesson from '../Lesson/Lesson'
 import LessonDetail from '../LessonDetail/LessonDetail'
 
@@ -38,7 +38,7 @@ class InstructorsAll extends Component {
 
     return (
       <React.Fragment>
-        <h1>All Instructors</h1>
+
         <div>
           {
             // Map through the allLessons state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.
@@ -48,14 +48,16 @@ class InstructorsAll extends Component {
                   lesson={lesson}
                   deleteClickHandler={this.deleteLesson.bind(this, lesson.id)}
                 />
-                <button
+                <button className="ui right floated red button"
                   onClick={() =>
                     db
                       .collection('lessons')
                       .doc(lesson.id)
-                      .delete()}>Delete</button> |
-                <button>
-                  <Link to={lesson.id}>Edit</Link>
+                      .delete()}>Delete
+                </button> |
+
+                <button className="ui left floated teal button">
+                  <Link style={{ color: 'white' }} to={lesson.id}>Details</Link>
                   <Route path={"lessons/:id"} component={LessonDetail} />
                 </button>
                 <hr />

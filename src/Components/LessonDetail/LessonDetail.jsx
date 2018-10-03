@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { db } from '../../firebase'
+import { Link } from 'react-router-dom'
 
 class LessonDetail extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class LessonDetail extends Component {
         <h2>{title}</h2>
         <p>{description} | <a href={url}>{url}</a></p>
         <small>{this.props.match.params.id}</small>
+        <Link to="/lessons">Lessons</Link>
 
       </div>
     );

@@ -10,7 +10,7 @@ class LessonList extends Component {
 
     return (
       <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
-        <h2>Instructor List</h2>
+
         <LessonsAll />
       </div>
     );
