@@ -1,52 +1,73 @@
 import React, { Component } from 'react'
-import { db } from "../../firebase";
+import { db } from '../../firebase'
+import { Link, Route } from "react-router-dom";
+import Lesson from '../Lesson/Lesson'
+import LessonDetail from '../LessonDetail/LessonDetail'
 
 class InstructorsAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allLessons: []
-    };
+    }
   }
 
+  // Get a snapshot of the collection 'lessons' from Firestore and set state
   componentDidMount() {
-    var wholeData = []
-    db.settings({ timestampsInSnapshots: true });
-    db.collection('lessons').orderBy('title', 'asc').get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          console.log(doc.data());
-          wholeData.push(doc.data())
-        });
-        console.log(wholeData)
-        this.setState({ allLessons: wholeData })
-        console.log(this.state.allLessons)
+    db.collection('lessons')
+      .onSnapshot(collection => {
+        const allLessons = collection.docs.map(doc => doc.data())
+        this.setState({ allLessons })
+        console.log(this.props.match)
       })
-      .catch(error => {
-        console.log('Error!', error);
-      })
+  }
+
+  deleteLesson = (id) => {
+    db
+      .collection('lessons')
+      .doc(id)
+      .delete()
+    console.log('Delete Lesson');
   }
 
 
   render() {
-    const listOfData = this.state.allLessons.map((val, index) => {
-      var title = val.title
-      var url = val.url
-      var key = index
-      return (
-        <li
-          key={key}> <strong>{title}</strong>  <a href={url}>{url}</a> | Edit
-        </li>
-      )
-    })
+    // Destructure state
+    const { allLessons } = this.state;
 
 
     return (
-      <div>
-        <ul>{listOfData}</ul>
-      </div>
+      <React.Fragment>
+        <h1>All Instructors</h1>
+        <div>
+          {
+            // Map through the allLessons state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.
+            allLessons.map(lesson =>
+              <div key={lesson.id}>
+                <Lesson
+                  lesson={lesson}
+                  deleteClickHandler={this.deleteLesson.bind(this, lesson.id)}
+                />
+                <button
+                  onClick={() =>
+                    db
+                      .collection('lessons')
+                      .doc(lesson.id)
+                      .delete()}>Delete</button> |
+                <button>
+                  <Link to={lesson.id}>Edit</Link>
+                  <Route path={"lessons/:id"} component={LessonDetail} />
+                </button>
+                <hr />
+              </div>
+            )
+          }
+        </div>
+
+      </React.Fragment>
     );
   }
 }
 
 export default InstructorsAll;
+
