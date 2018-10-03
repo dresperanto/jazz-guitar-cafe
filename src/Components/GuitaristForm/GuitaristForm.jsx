@@ -22,7 +22,7 @@ class LessonForm extends Component {
 
   addData = e => {
     e.preventDefault();
-    const newLesson = db.collection('lessons').doc()
+    const newLesson = db.collection('guitarists').doc()
 
     newLesson.set({
       // Set Id to Firestore Document Name

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Lesson extends Component {
+class Guitarist extends Component {
   state = {
-    showLessonInfo: true
+    showGuitaristInfo: true
   };
 
   onShowClick = e => {
     // Toggle state between true and false
-    this.setState({ showCLessonInfo: !this.state.showLessonInfo });
+    this.setState({ showGuitaristInfo: !this.state.showGuitaristInfo });
     console.log('State updated');
   };
 
@@ -17,8 +17,8 @@ class Lesson extends Component {
   }
 
   render() {
-    const { title, url, description, id } = this.props.lesson;
-    const { showLessonInfo } = this.state;
+    const { title, url, description, id } = this.props.guitarist;
+    const { showGuitaristInfo } = this.state;
 
     return (
       <div>
@@ -36,7 +36,7 @@ class Lesson extends Component {
         </h4>
 
 
-        {showLessonInfo ? (
+        {showGuitaristInfo ? (
           <p>
             {url}<br />
             {description}
@@ -48,4 +48,4 @@ class Lesson extends Component {
   }
 }
 
-export default Lesson
+export default Guitarist

@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <div className="ui purple pointing menu">
       <NavLink exact to="/" className="item">Home</NavLink>
-      <NavLink exact to="/lessons" className="item">Lesson List</NavLink>
-      <NavLink to="/add" className="item">Add a Lesson</NavLink>
+      <NavLink exact to="/guitarists" className="item">Guitarists List</NavLink>
+      <NavLink to="/add" className="item">Add a Guitarist</NavLink>
       <div className="right menu">
         <div className="item">
           <div className="ui transparent icon input">

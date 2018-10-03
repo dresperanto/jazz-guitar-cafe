@@ -12,7 +12,7 @@ class LessonDetail extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id
-    db.collection("lessons").doc(id)
+    db.collection("guitarists").doc(id)
       .get()
       .then(doc => this.setState({ profile: doc.data() }))
   }
@@ -27,7 +27,7 @@ class LessonDetail extends Component {
         <h2>{title}</h2>
         <p>{description} | <a href={url}>{url}</a></p>
         <small>{this.props.match.params.id}</small>
-        <Link to="/lessons">Lessons</Link>
+        <Link to="/guitarists">Guitarists</Link>
 
       </div>
     );

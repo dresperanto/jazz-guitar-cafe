@@ -1,17 +1,17 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Home from '../Home/Home'
-import LessonForm from '../LessonForm/LessonForm'
-import LessonList from '../LessonList/LessonList'
-import LessonDetail from '../LessonDetail/LessonDetail'
+import GuitaristForm from '../GuitaristForm/GuitaristForm'
+import GuitaristList from '../GuitaristList/GuitaristList'
+import GuitaristDetail from '../GuitaristDetail/GuitaristDetail'
 
 const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/lessons" component={LessonList} />
-      <Route path="/add" component={LessonForm} />
-      <Route path="/instructors/:id" component={LessonDetail} />
+      <Route path="/guitarists" component={GuitaristList} />
+      <Route path="/add" component={GuitaristForm} />
+      <Route path="/instructors/:id" component={GuitaristDetail} />
     </Switch>
   </main>
 )
