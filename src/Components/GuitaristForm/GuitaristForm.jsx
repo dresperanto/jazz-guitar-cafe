@@ -6,8 +6,9 @@ class LessonForm extends Component {
     super(props);
     this.state = {
       id: '',
-      title: '',
-      url: '',
+      firstName: '',
+      lastName: '',
+      website: '',
       description: '',
     };
   }
@@ -27,14 +28,16 @@ class LessonForm extends Component {
     newLesson.set({
       // Set Id to Firestore Document Name
       id: newLesson.id,
-      title: this.state.title,
-      url: this.state.url,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      website: this.state.website,
       description: this.state.description
     });
     this.setState({
       id: '',
-      title: '',
-      url: '',
+      firstName: '',
+      lastName: '',
+      website: '',
       description: ''
     });
   };
@@ -53,24 +56,35 @@ class LessonForm extends Component {
         <form onSubmit={this.addData} className="ui form">
 
           <div className="field">
-            <label>Title</label>
+            <label>First Name</label>
             <input
               type="text"
-              name="title"
-              placeholder="Title"
+              name="firstName"
+              placeholder="First Name..."
               onChange={this.updateInput}
-              value={this.state.title}
+              value={this.state.firstName}
             />
           </div>
 
           <div className="field">
-            <label>URL</label>
+            <label>Last Name</label>
             <input
               type="text"
-              name="url"
+              name="lastName"
+              placeholder="Last Name..."
+              onChange={this.updateInput}
+              value={this.state.lastName}
+            />
+          </div>
+
+          <div className="field">
+            <label>Website</label>
+            <input
+              type="text"
+              name="website"
               placeholder="URL"
               onChange={this.updateInput}
-              value={this.state.url}
+              value={this.state.website}
             />
           </div>
 
@@ -79,7 +93,7 @@ class LessonForm extends Component {
             <input
               type="text"
               name="description"
-              placeholder="Title"
+              placeholder="Description"
               onChange={this.updateInput}
               value={this.state.description}
             />

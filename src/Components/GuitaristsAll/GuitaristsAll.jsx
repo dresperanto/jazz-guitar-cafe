@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Guitarist from '../Guitarist/Guitarist'
 
 
-class InstructorsAll extends Component {
+class GuitaristsAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,23 +43,20 @@ class InstructorsAll extends Component {
           {
             // Map through the allGuitarists state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.
             allGuitarists.map(guitarist =>
+
               <div key={guitarist.id}>
                 <Guitarist
                   guitarist={guitarist}
                   deleteClickHandler={this.deleteGuitarist.bind(this, guitarist.id)}
                 />
-                <button className="ui right floated red button"
+                {/* <button className="ui right floated red button"
                   onClick={() =>
                     db
                       .collection('guitarists')
                       .doc(guitarist.id)
                       .delete()}>Delete
-                </button> |
-
-                <button className="ui left floated teal button">
-                  <Link style={{ color: 'white' }} to={`/instructors/${guitarist.id}`}>Details</Link>
-
-                </button>
+                </button> | 
+                <Link style={{ color: 'blue' }} to={`/guitarists/${guitarist.id}`}>Details</Link>*/}
                 <hr />
               </div>
             )
@@ -71,5 +68,5 @@ class InstructorsAll extends Component {
   }
 }
 
-export default InstructorsAll;
+export default GuitaristsAll;
 

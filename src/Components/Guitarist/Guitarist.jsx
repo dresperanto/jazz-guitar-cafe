@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 
 class Guitarist extends Component {
   state = {
@@ -17,12 +18,28 @@ class Guitarist extends Component {
   }
 
   render() {
-    const { title, url, description, id } = this.props.guitarist;
-    const { showGuitaristInfo } = this.state;
+    const { firstName, lastName, description, id } = this.props.guitarist;
+    // const { showGuitaristInfo } = this.state;
 
     return (
-      <div>
-        <h4>{title} | {id}
+      <div className="ui relaxed list">
+        <div className="item">
+          <img className="ui avatar image" src="./images/daniel.jpg" alt={lastName} />
+          <div className="content">
+
+            <a className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link></a>
+            <div className="description" style={{
+              fontSize: '80%',
+              width: '450px',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>{description}
+
+            </div>
+          </div>
+        </div>
+        {/* <h4>{firstName} {lastName}
           <i
             onClick={this.onShowClick}
             className="fas fa-sort-down"
@@ -33,15 +50,7 @@ class Guitarist extends Component {
             className="fas fa-times"
             style={{ cursor: 'pointer', marginLeft: 20, color: 'red' }}
           />
-        </h4>
-
-
-        {showGuitaristInfo ? (
-          <p>
-            {url}<br />
-            {description}
-          </p>
-        ) : null}
+        </h4> */}
 
       </div>
     )

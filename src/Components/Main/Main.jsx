@@ -9,9 +9,9 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/guitarists" component={GuitaristList} />
+      <Route exact path="/guitarists" component={GuitaristList} />
       <Route path="/add" component={GuitaristForm} />
-      <Route path="/instructors/:id" component={GuitaristDetail} />
+      <Route path="/guitarists/:id" component={GuitaristDetail} />
     </Switch>
   </main>
 )
