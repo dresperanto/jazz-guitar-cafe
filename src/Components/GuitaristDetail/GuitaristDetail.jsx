@@ -49,6 +49,8 @@ class GuitaristDetail extends Component {
 
 
 
+
+
   render() {
 
     const { profile, users, name, summary, photo, isLoaded } = this.state
@@ -61,8 +63,9 @@ class GuitaristDetail extends Component {
 
       return (
         <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
-          <h1>{name} | <Link to="/guitarists">All Guitarists</Link></h1>
-          <h3>Bio</h3>
+          <h1>Details | <Link to="/guitarists">All Guitarists</Link></h1>
+          <h3>{name}</h3>
+
           <img className="ui small rounded left floated image" src={photo} alt={name} />
           <p>{summary}</p>
 

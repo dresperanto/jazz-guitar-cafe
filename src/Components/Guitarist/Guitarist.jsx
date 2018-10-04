@@ -17,6 +17,8 @@ class Guitarist extends Component {
     console.log('Delete clicked');
   }
 
+
+
   render() {
     const { firstName, lastName, description, id } = this.props.guitarist;
     // const { showGuitaristInfo } = this.state;
@@ -27,7 +29,10 @@ class Guitarist extends Component {
           <img className="ui avatar image" src="./images/daniel.jpg" alt={lastName} />
           <div className="content">
 
-            <a className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link></a>
+            <h2 className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link></h2>
+            <Link to={`/edit/${id}}`}>Edit</Link>
+
+
             <div className="description" style={{
               fontSize: '80%',
               width: '450px',

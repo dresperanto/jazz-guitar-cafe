@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { db } from '../../firebase'
-import { Link } from "react-router-dom"
 import Guitarist from '../Guitarist/Guitarist'
 
 
@@ -8,19 +7,21 @@ class GuitaristsAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allGuitarists: []
+      allGuitarists: [],
     }
   }
 
   // Get a snapshot of the collection 'lessons' from Firestore and set state
   componentDidMount() {
-    db.collection('guitarists')
+    db.collection('guitarists').orderBy("firstName")
       .onSnapshot(collection => {
         const allGuitarists = collection.docs.map(doc => doc.data())
         this.setState({ allGuitarists })
         console.log(this.props.match)
-      })
+      });
   }
+
+
 
   deleteGuitarist = (id) => {
     db
@@ -38,7 +39,6 @@ class GuitaristsAll extends Component {
 
     return (
       <React.Fragment>
-
         <div>
           {
             // Map through the allGuitarists state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.

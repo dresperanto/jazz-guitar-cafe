@@ -12,6 +12,7 @@ const Main = () => (
       <Route exact path="/guitarists" component={GuitaristList} />
       <Route path="/add" component={GuitaristForm} />
       <Route path="/guitarists/:id" component={GuitaristDetail} />
+      <Route path="/edit/:id" component={GuitaristForm} />
     </Switch>
   </main>
 )
