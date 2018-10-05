@@ -36,7 +36,7 @@ class GuitaristDetail extends Component {
   }
 
   fetchFmData() {
-    fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${this.state.profile.firstName}+${this.state.profile.lastName}&api_key=00982ad857ff6c4f4fd30248059b96b6&format=json`)
+    fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${this.state.profile.firstName}+${this.state.profile.lastName}&api_key=00982ad857ff6c4f4fd30248059b96b6&format=json`)
       .then(response => response.json())
       .then(data => this.setState({
         name: data.artist.name,
