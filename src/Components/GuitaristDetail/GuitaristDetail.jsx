@@ -8,11 +8,10 @@ class GuitaristDetail extends Component {
     this.state = {
       profile: '',
       name: '',
-      data: '',
-      isLoaded: false,
-      users: [],
       summary: '',
-      photo: ''
+      photo: '',
+      topAlbums: [],
+      isLoaded: false
     }
   }
 
@@ -21,21 +20,22 @@ class GuitaristDetail extends Component {
     db.collection("guitarists").doc(id)
       .get()
       .then(doc => this.setState({ profile: doc.data() }));
-    this.fetchPlaceholderData();
 
   }
 
   componentDidUpdate() {
-    this.fetchFmData();
+    this.fetchArtistData()
+    this.fetchAlbumData()
   }
 
-  fetchPlaceholderData() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => this.setState({ users: data, isLoaded: true }));
-  }
+  // fetchPlaceholderData() {
+  //   fetch('https://jsonplaceholder.typicode.com/users')
+  //     .then(response => response.json())
+  //     .then(data => this.setState({ users: data, isLoaded: true }));
+  // }
 
-  fetchFmData() {
+
+  fetchArtistData() {
     fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${this.state.profile.firstName}+${this.state.profile.lastName}&api_key=00982ad857ff6c4f4fd30248059b96b6&format=json`)
       .then(response => response.json())
       .then(data => this.setState({
@@ -43,17 +43,24 @@ class GuitaristDetail extends Component {
         summary: data.artist.bio.summary,
         photo: data.artist.image[2]['#text'],
         isLoaded: true
+
       }))
+      .catch(error => console.log('Parsing failed', error))
+  }
+
+  fetchAlbumData() {
+    fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${this.state.profile.firstName}+${this.state.profile.lastName}&api_key=00982ad857ff6c4f4fd30248059b96b6&format=json`)
+      .then(response => response.json())
+      .then(data => this.setState({ topAlbums: data.topalbums.album }))
       .catch(error => console.log('Parsing failed', error))
   }
 
 
 
 
-
   render() {
 
-    const { profile, users, name, summary, photo, isLoaded } = this.state
+    const { profile, name, summary, photo, topAlbums, isLoaded } = this.state
 
     if (!isLoaded) {
       return <div className="ui active centered inline loader"></div>
@@ -71,8 +78,6 @@ class GuitaristDetail extends Component {
 
           <p><a href={profile.website}>Website</a></p>
 
-
-
           <h4 className="ui horizontal divider header">
             <i className="music icon"></i>
             Recordings
@@ -80,9 +85,22 @@ class GuitaristDetail extends Component {
 
           <ul>
 
-            {users.map(user => (
-              <li key={user.id}>
-                {user.name} | {user.email}</li>
+            {topAlbums.map(album => (
+
+              <div className="ui list">
+                <div className="item">
+                  <img className="ui rounded image" src={album.image[0]['#text']} alt="album cover" />
+                  <div className="content">
+                    <a className="header"><a href={album.url}>{album.name} </a></a>
+                    <div className="description"><strong>Playcount:</strong> {album.playcount}</div>
+                  </div>
+                </div>
+              </div>
+
+              // <li key={album.mbid}>
+              //   <img src={album.image[0]['#text']} alt="album cover" />
+              //   <a href={album.url}>{album.name} </a>
+              // </li>
             ))}
 
           </ul>
