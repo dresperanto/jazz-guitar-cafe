@@ -1,5 +1,41 @@
+/* Color Pallete
+
+Brown   color: #763300!important;
+Cream   color: #d7b787!important;
+White   color: #f9f8f6!important;
+Grey    color: #aaa7a2!important;
+Dark    color: #5e5553!important;
+
+*/
+
 body {
-  background-color: #43005e;
+  background-color: #763300!important;
   background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+h1, h2, h3, h4 {
+  color: #5e5553!important;
+  font-family: 'Limelight', cursive!important;
+  /* font-family: 'Abril Fatface', cursive;
+  font-family: 'Questrial', sans-serif;
+  font-family: 'Notable', sans-serif;
+  font-family: 'Anton', sans-serif;
+  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Boogaloo', cursive;
+  font-family: 'Limelight', cursive; */
+}
+
+p {
+  font-family: 'Questrial', sans-serif!important;
+
+}
+
+.menu {
+  background-color: #f9f8f6!important;
+  font-family: 'Limelight', cursive!important;
+}
+
+.segment, container {
+  background-color: #f9f8f6!important;
 }

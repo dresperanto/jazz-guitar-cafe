@@ -29,8 +29,8 @@ class Guitarist extends Component {
           <img className="ui avatar image" src="./images/daniel.jpg" alt={lastName} />
           <div className="content">
 
-            <h2 className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link></h2>
-            <Link to={`/edit/${id}}`}>Edit</Link>
+            <h2 className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link> | <Link to={`/edit/${id}}`}>Edit</Link></h2>
+
 
 
             <div className="description" style={{

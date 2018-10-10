@@ -8,6 +8,8 @@ class GuitaristsAll extends Component {
     super(props);
     this.state = {
       allGuitarists: [],
+      isLoaded: false
+
     }
   }
 
@@ -16,7 +18,7 @@ class GuitaristsAll extends Component {
     db.collection('guitarists').orderBy("firstName")
       .onSnapshot(collection => {
         const allGuitarists = collection.docs.map(doc => doc.data())
-        this.setState({ allGuitarists })
+        this.setState({ allGuitarists, isLoaded: true })
         console.log(this.props.match)
       });
   }

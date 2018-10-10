@@ -63,13 +63,18 @@ class GuitaristDetail extends Component {
     const { profile, name, summary, photo, topAlbums, isLoaded } = this.state
 
     if (!isLoaded) {
-      return <div className="ui active centered inline loader"></div>
+      return <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
+        <div className="ui active inverted dimmer">
+          <div className="ui text loader">Loading</div>
+        </div>
+        <p></p>
+      </div>
     }
 
     else {
 
       return (
-        <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
+        <div className="ui raised very padded text container segment animated fadeIn" style={{ marginTop: "30px" }}>
           <h1>Details | <Link to="/guitarists">All Guitarists</Link></h1>
           <h3>{name}</h3>
 
@@ -83,27 +88,19 @@ class GuitaristDetail extends Component {
             Recordings
           </h4>
 
-          <ul>
-
+          <div className="ui list">
             {topAlbums.map(album => (
-
-              <div className="ui list">
-                <div className="item">
-                  <img className="ui rounded image" src={album.image[0]['#text']} alt="album cover" />
-                  <div className="content">
-                    <a className="header"><a href={album.url}>{album.name} </a></a>
-                    <div className="description"><strong>Playcount:</strong> {album.playcount}</div>
+              <div key={album.mbid} className="item" style={{ marginBottom: '1.6em', borderBottom: '1px, solid, #f5f5f5' }}>
+                <img className="ui rounded image" src={album.image[0]['#text']} alt="album cover" />
+                <div className="content">
+                  <span className="header"><a href={album.url}>{album.name}</a></span>
+                  <div className="description">
+                    <strong>Playcount:</strong> {album.playcount}
                   </div>
                 </div>
               </div>
-
-              // <li key={album.mbid}>
-              //   <img src={album.image[0]['#text']} alt="album cover" />
-              //   <a href={album.url}>{album.name} </a>
-              // </li>
             ))}
-
-          </ul>
+          </div>
 
           <p><small><strong>ID:</strong>{this.props.match.params.id}</small></p>
         </div>
