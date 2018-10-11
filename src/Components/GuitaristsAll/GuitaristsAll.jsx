@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { db } from '../../firebase'
 import Guitarist from '../Guitarist/Guitarist'
 
-
 class GuitaristsAll extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,6 @@ class GuitaristsAll extends Component {
         console.log(this.props.match)
       });
   }
-
 
 
   deleteGuitarist = (id) => {
