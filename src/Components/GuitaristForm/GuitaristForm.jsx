@@ -7,6 +7,7 @@ class LessonForm extends Component {
     this.state = {
       id: '',
       firstName: '',
+      name: '',
       lastName: '',
       website: '',
       description: '',
@@ -30,6 +31,7 @@ class LessonForm extends Component {
       id: newLesson.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      name: this.state.firstName + ' ' + this.state.lastName,
       website: this.state.website,
       description: this.state.description
     });
@@ -37,6 +39,7 @@ class LessonForm extends Component {
       id: '',
       firstName: '',
       lastName: '',
+      name: '',
       website: '',
       description: ''
     });

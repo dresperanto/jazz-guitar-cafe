@@ -48,6 +48,7 @@ class GuitaristEditForm extends Component {
       id: newLesson.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      name: this.state.firstName + ' ' + this.state.lastName,
       website: this.state.website,
       description: this.state.description
     });

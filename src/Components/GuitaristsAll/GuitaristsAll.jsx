@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { db } from '../../firebase'
+import FontAwesome from 'react-fontawesome';
 import Guitarist from '../Guitarist/Guitarist'
+import '../SearchBar/SearchBar.css'
 
 class GuitaristsAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allGuitarists: [],
+      search: '',
       isLoaded: false
 
     }
@@ -22,7 +25,7 @@ class GuitaristsAll extends Component {
       });
   }
 
-
+  // Delete guitarist. id comes from Guitarist component
   deleteGuitarist = (id) => {
     db
       .collection('guitarists')
@@ -32,31 +35,45 @@ class GuitaristsAll extends Component {
   }
 
 
+  onChange = (e) => {
+    this.setState({ search: e.target.value })
+  }
+
+
+
   render() {
     // Destructure state
-    const { allGuitarists } = this.state;
-
+    const { allGuitarists, search } = this.state;
+    const filteredGuitarists = allGuitarists.filter(guitarist => {
+      return guitarist.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    })
 
     return (
       <React.Fragment>
+
+        <div className="rmdb-searchbar">
+          <div className="rmdb-searchbar-content">
+            <FontAwesome className="rmdb-fa-search" name="search" size="2x" />
+            <input
+              type="text"
+              className="rmdb-searchbar-input"
+              placeholder="Search Jazz Guitarists"
+              onChange={this.onChange}
+              value={this.state.value}
+            />
+          </div>
+        </div>
+
         <div>
           {
             // Map through the allGuitarists state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.
-            allGuitarists.map(guitarist =>
+            filteredGuitarists.map(guitarist =>
 
               <div key={guitarist.id}>
                 <Guitarist
                   guitarist={guitarist}
                   deleteClickHandler={this.deleteGuitarist.bind(this, guitarist.id)}
                 />
-                {/* <button className="ui right floated red button"
-                  onClick={() =>
-                    db
-                      .collection('guitarists')
-                      .doc(guitarist.id)
-                      .delete()}>Delete
-                </button> | 
-                <Link style={{ color: 'blue' }} to={`/guitarists/${guitarist.id}`}>Details</Link>*/}
                 <hr />
               </div>
             )

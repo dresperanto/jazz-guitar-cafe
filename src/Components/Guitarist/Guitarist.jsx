@@ -20,18 +20,16 @@ class Guitarist extends Component {
 
 
   render() {
-    const { firstName, lastName, description, id } = this.props.guitarist;
+    const { description, id, name } = this.props.guitarist;
     // const { showGuitaristInfo } = this.state;
 
     return (
       <div className="ui relaxed list">
         <div className="item">
-          <img className="ui avatar image" src="./images/daniel.jpg" alt={lastName} />
+          <img className="ui avatar image" src="./images/daniel.jpg" alt={name} />
           <div className="content">
 
-            <h2 className="header">{firstName} {lastName} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link> | <Link to={`/edit/${id}`}>Edit</Link> | <a onClick={this.onDeleteClick} style={{ cursor: 'pointer', color: 'red' }}>Delete</a></h2>
-
-
+            <h2 className="header">{name} | <Link style={{ color: 'orange' }} to={`/guitarists/${id}`}>Details</Link> | <Link to={`/edit/${id}`}>Edit</Link> | <a onClick={this.onDeleteClick} style={{ cursor: 'pointer', color: 'red' }}>Delete</a></h2>
 
             <div className="description" style={{
               fontSize: '80%',
