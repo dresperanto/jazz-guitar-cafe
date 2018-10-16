@@ -2,12 +2,12 @@ import firebase from 'firebase'
 require('firebase/firestore')
 
 var config = {
-  apiKey: "AIzaSyD-XCn45EccUDhkMKkEF29w-ULZ5XTzFyA",
-  authDomain: "muzemaster-lessons.firebaseapp.com",
-  databaseURL: "https://muzemaster-lessons.firebaseio.com",
-  projectId: "muzemaster-lessons",
-  storageBucket: "",
-  messagingSenderId: "1010208036989"
+  apiKey: "AIzaSyCOdrfdKZQ6F_ULxdfxiiYRWkXc-ii0uUU",
+  authDomain: "jazz-guitar-cafe.firebaseapp.com",
+  databaseURL: "https://jazz-guitar-cafe.firebaseio.com",
+  projectId: "jazz-guitar-cafe",
+  storageBucket: "jazz-guitar-cafe.appspot.com",
+  messagingSenderId: "808651069974"
 };
 firebase.initializeApp(config);
 
