@@ -25,7 +25,7 @@ class Guitarist extends Component {
 
     return (
       <div className="ui relaxed list">
-        <div className="item">
+        <div className="item" key={id}>
           <img className="ui avatar image" src="./images/daniel.jpg" alt={name} />
           <div className="content">
 

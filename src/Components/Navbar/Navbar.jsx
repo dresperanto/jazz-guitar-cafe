@@ -8,6 +8,8 @@ const Navbar = () => {
       <NavLink exact to="/guitarists" className="item">Guitarists</NavLink>
       <NavLink to="/add" className="item">Add a Guitarist</NavLink>
       <div className="right menu">
+        <NavLink to="/login" className="item">Log in</NavLink>
+        <NavLink to="/signup" className="item">Signup</NavLink>
         <div className="item">
           <div className="ui transparent icon input">
             <input type="text" placeholder="Search..." />

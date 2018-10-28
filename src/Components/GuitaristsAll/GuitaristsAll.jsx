@@ -66,7 +66,7 @@ class GuitaristsAll extends Component {
 
         <div>
           {
-            // Map through the allGuitarists state and display the entire Instructor component (not just specific fields, e.g. lesson.title etc.
+            // Map through the allGuitarists state and display the entire Guitarist component (not just specific fields, e.g. lesson.title etc.
             filteredGuitarists.map(guitarist =>
 
               <div key={guitarist.id}>

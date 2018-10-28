@@ -5,6 +5,7 @@
   "dependencies": {
     "cuid": "^2.1.4",
     "firebase": "^5.4.2",
+    "firebaseui": "^3.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-fontawesome": "^1.6.1",

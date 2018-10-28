@@ -90,7 +90,7 @@ class GuitaristDetail extends Component {
 
           <div className="ui list">
             {topAlbums.map(album => (
-              <div key={album.mbid} className="item" style={{ marginBottom: '1.6em', borderBottom: '1px, solid, #f5f5f5' }}>
+              <div key={album.name} className="item" style={{ marginBottom: '1.6em', borderBottom: '1px, solid, #f5f5f5' }}>
                 {album.image[0]['#text'] ?
                   <img className="ui rounded image" src={album.image[0]['#text']} alt="album cover" />
                   : <img className="ui rounded image" src={photo} alt="default" style={{ height: '34px', width: '34px' }} />

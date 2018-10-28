@@ -39,3 +39,8 @@ p {
 .segment, container {
   background-color: #f9f8f6!important;
 }
+
+.title {
+  font-size: 4.8rem;
+  font-family: 'Limelight', cursive!important;
+}
