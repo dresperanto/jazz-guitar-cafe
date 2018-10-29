@@ -17,7 +17,7 @@ class GuitaristDetail extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id
-    db.collection("guitarists").doc(id)
+    db.onceGetUser.doc(id)
       .get()
       .then(doc => this.setState({ profile: doc.data() }));
 

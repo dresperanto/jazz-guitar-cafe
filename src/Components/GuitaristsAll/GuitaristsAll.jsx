@@ -17,7 +17,7 @@ class GuitaristsAll extends Component {
 
   // Get a snapshot of the collection 'lessons' from Firestore and set state
   componentDidMount() {
-    db.collection('guitarists').orderBy("firstName")
+    db.onceGetUsers()
       .onSnapshot(collection => {
         const allGuitarists = collection.docs.map(doc => doc.data())
         this.setState({ allGuitarists, isLoaded: true })

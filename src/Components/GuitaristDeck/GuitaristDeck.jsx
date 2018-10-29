@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { db } from '../../firebase'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { db } from '../../firebase';
 
 class GuitaristDeck extends Component {
   state = {
@@ -15,7 +15,7 @@ class GuitaristDeck extends Component {
 
   // Get a snapshot of the collection 'guitarists' from Firestore and set state
   componentDidMount() {
-    db.collection('guitarists').orderBy("firstName")
+    db.onceGetUsers()
       .onSnapshot(collection => {
         const allGuitarists = collection.docs.map(doc => doc.data())
         this.setState({ allGuitarists })
