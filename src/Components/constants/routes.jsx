@@ -1,0 +1,10 @@
+export const SIGN_UP = '/signup';
+export const SIGN_IN = '/signin';
+export const LANDING = '/';
+export const HOME = '/home';
+export const ACCOUNT = '/account';
+export const PASSWORD_FORGET = '/pw-forget';
+export const GUITARIST_LIST = '/guitarists'
+export const GUITARIST_DETAIL = '/guitarists/:id'
+export const GUITARIST_ADD = '/add'
+export const GUITARIST_EDIT = '/edit/:id'

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { db } from '../../firebase'
+import * as routes from '../constants/routes';
 
 class GuitaristEditForm extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class GuitaristEditForm extends Component {
 
   componentDidMount() {
     let id = this.props.match.params.id
-    db.collection("guitarists").doc(id)
+    db.onceGetUser.doc(id)
       .get()
       .then(doc => this.setState({
         profile: doc.data(),
@@ -39,9 +40,11 @@ class GuitaristEditForm extends Component {
 
 
   addData = e => {
+    const { history } = this.props;
+
     e.preventDefault();
     let id = this.props.match.params.id
-    const newLesson = db.collection('guitarists').doc(id)
+    const newLesson = db.onceGetUser.doc(id)
 
     newLesson.set({
       // Set Id to Firestore Document Name
@@ -59,13 +62,14 @@ class GuitaristEditForm extends Component {
       website: '',
       description: ''
     });
+    history.push(routes.GUITARIST_LIST);
   };
 
 
 
   render() {
     return (
-      <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
+      <div className="ui raised very padded text container segment animated fadeIn" style={{ marginTop: "30px" }}>
         <header className="App-header">
           <h1>Edit</h1>
           <h3 className="App-title">{this.state.name}</h3>

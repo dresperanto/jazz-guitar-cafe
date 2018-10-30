@@ -6,16 +6,26 @@ import GuitaristEditForm from '../GuitaristEditForm/GuitaristEditForm'
 import GuitaristList from '../GuitaristList/GuitaristList'
 import GuitaristDetail from '../GuitaristDetail/GuitaristDetail'
 import GuitaristDeck from '../GuitaristDeck/GuitaristDeck'
+import SignInPage from '../Auth/SignIn'
+import SignUpPage from '../Auth/SignUp'
+import * as routes from '../constants/routes'
+
+// Routes are stored in the routes file and imported
 
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/guitarists" component={GuitaristList} />
-      <Route path="/add" component={GuitaristForm} />
-      <Route path="/guitarists/:id" component={GuitaristDetail} />
-      <Route path="/edit/:id" component={GuitaristEditForm} />
+      <Route exact path={routes.LANDING} component={Home} />
+      <Route exact path={routes.HOME} component={Home} />
+      <Route exact path={routes.GUITARIST_LIST} component={GuitaristList} />
+      <Route exact path={routes.GUITARIST_ADD} component={GuitaristForm} />
+      <Route exact path={routes.GUITARIST_DETAIL} component={GuitaristDetail} />
+      <Route exact path={routes.GUITARIST_EDIT} component={GuitaristEditForm} />
       <Route path="/deck" component={GuitaristDeck} />
+
+      <Route exact path={routes.SIGN_UP} component={SignUpPage} />
+      <Route exact path={routes.SIGN_IN} component={SignInPage} />
+
     </Switch>
   </main>
 )

@@ -49,7 +49,7 @@ class LessonForm extends Component {
 
   render() {
     return (
-      <div className="ui raised very padded text container segment" style={{ marginTop: "30px" }}>
+      <div className="ui raised very padded text container segment animated fadeIn" style={{ marginTop: "30px" }}>
         <header className="App-header">
 
           <h1 className="App-title">{this.state.name}</h1>
