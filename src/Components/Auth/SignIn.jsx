@@ -1,26 +1,32 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
-import { SignUpLink } from './SignUp';
-import { auth } from '../../firebase';
-import * as routes from '../constants/routes';
+import { SignUpLink } from "./SignUp";
+import { PasswordForgetLink } from "./PasswordForget";
+import { auth } from "../../firebase";
+import * as routes from "../constants/routes";
 
-const SignInPage = ({ history }) =>
-  <div className="ui raised very padded text container segment animated fadeIn" style={{ marginTop: "30px" }}>
+const SignInPage = ({ history }) => (
+  <div
+    className="ui raised very padded text container segment animated fadeIn"
+    style={{ marginTop: "30px" }}
+  >
     <h1>Log In</h1>
     <SignInForm history={history} />
     <br />
     <SignUpLink />
+    <PasswordForgetLink />
   </div>
+);
 
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
+  [propertyName]: value
 });
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
+  email: "",
+  password: "",
+  error: null
 };
 
 class SignInForm extends Component {
@@ -30,38 +36,28 @@ class SignInForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
-    const {
-      email,
-      password,
-    } = this.state;
+  onSubmit = event => {
+    const { email, password } = this.state;
 
-    const {
-      history,
-    } = this.props;
+    const { history } = this.props;
 
-    auth.doSignInWithEmailAndPassword(email, password)
+    auth
+      .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         history.push(routes.HOME);
       })
       .catch(error => {
-        this.setState(byPropKey('error', error));
+        this.setState(byPropKey("error", error));
       });
 
     event.preventDefault();
-  }
+  };
 
   render() {
-    const {
-      email,
-      password,
-      error,
-    } = this.state;
+    const { email, password, error } = this.state;
 
-    const isInvalid =
-      password === '' ||
-      email === '';
+    const isInvalid = password === "" || email === "";
 
     return (
       <form className="ui form" onSubmit={this.onSubmit}>
@@ -69,7 +65,9 @@ class SignInForm extends Component {
           <label>Email</label>
           <input
             value={email}
-            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            onChange={event =>
+              this.setState(byPropKey("email", event.target.value))
+            }
             type="text"
             placeholder="Email Address"
           />
@@ -78,12 +76,18 @@ class SignInForm extends Component {
           <label>Password</label>
           <input
             value={password}
-            onChange={event => this.setState(byPropKey('password', event.target.value))}
+            onChange={event =>
+              this.setState(byPropKey("password", event.target.value))
+            }
             type="password"
             placeholder="Password"
           />
         </div>
-        <button className="positive ui button" disabled={isInvalid} type="submit">
+        <button
+          className="positive ui button"
+          disabled={isInvalid}
+          type="submit"
+        >
           Sign In
         </button>
 
@@ -95,6 +99,4 @@ class SignInForm extends Component {
 
 export default withRouter(SignInPage);
 
-export {
-  SignInForm,
-};
+export { SignInForm };

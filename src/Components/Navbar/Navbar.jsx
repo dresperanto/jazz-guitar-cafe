@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { auth } from "../../firebase";
-import AuthUserContext from "../Auth/AuthUserContext";
+import AuthUserContext from "../../AuthUserContext";
 
 const Navbar = ({ authUser }) => (
   <AuthUserContext.Consumer>
@@ -21,7 +21,26 @@ const NavAuth = ({ authUser }) => (
       Add a Guitarist
     </NavLink>
     <div className="right menu">
-      <Link to="/" onClick={auth.doSignOut} className="item">
+      <div class="ui simple dropdown item">
+        My Acount
+        <i class="dropdown icon" />
+        <div class="menu">
+          <Link to="/account" className="item">
+            Account Info
+          </Link>
+          <Link to="/" onClick={auth.doSignOut} className="item">
+            Log out
+          </Link>
+        </div>
+      </div>
+      <div className="item">
+        <div className="ui transparent icon input">
+          <input type="text" placeholder="Search..." />
+          <i className="search link icon" />
+        </div>
+      </div>
+
+      {/* <Link to="/" onClick={auth.doSignOut} className="item">
         Log out
       </Link>
       <div className="item">
@@ -29,7 +48,7 @@ const NavAuth = ({ authUser }) => (
           <input type="text" placeholder="Search..." />
           <i className="search link icon" />
         </div>
-      </div>
+      </div> */}
     </div>
   </div>
 );

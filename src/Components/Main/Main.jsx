@@ -1,14 +1,16 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import Home from '../Home/Home'
-import GuitaristForm from '../GuitaristForm/GuitaristForm'
-import GuitaristEditForm from '../GuitaristEditForm/GuitaristEditForm'
-import GuitaristList from '../GuitaristList/GuitaristList'
-import GuitaristDetail from '../GuitaristDetail/GuitaristDetail'
-import GuitaristDeck from '../GuitaristDeck/GuitaristDeck'
-import SignInPage from '../Auth/SignIn'
-import SignUpPage from '../Auth/SignUp'
-import * as routes from '../constants/routes'
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import Home from "../Home/Home";
+import GuitaristForm from "../GuitaristForm/GuitaristForm";
+import GuitaristEditForm from "../GuitaristEditForm/GuitaristEditForm";
+import GuitaristList from "../GuitaristList/GuitaristList";
+import GuitaristDetail from "../GuitaristDetail/GuitaristDetail";
+import GuitaristDeck from "../GuitaristDeck/GuitaristDeck";
+import AccountPage from "../Auth/Account";
+import SignInPage from "../Auth/SignIn";
+import SignUpPage from "../Auth/SignUp";
+import PasswordForgetPage from "../Auth/PasswordForget";
+import * as routes from "../constants/routes";
 
 // Routes are stored in the routes file and imported
 
@@ -26,8 +28,14 @@ const Main = () => (
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
 
+      <Route exact path={routes.ACCOUNT} component={AccountPage} />
+      <Route
+        exact
+        path={routes.PASSWORD_FORGET}
+        component={PasswordForgetPage}
+      />
     </Switch>
   </main>
-)
+);
 
-export default Main
+export default Main;
