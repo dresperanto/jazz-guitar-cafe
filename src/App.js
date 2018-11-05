@@ -1,33 +1,14 @@
-import React, { Component } from 'react';
-import Main from './Components/Main/Main'
-import Navbar from './Components/Navbar/Navbar'
-import { firebase } from './firebase';
+import React from "react";
+import Main from "./Components/Main/Main";
+import Navbar from "./Components/Navbar/Navbar";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+import withAuthentication from "./Components/Auth/withAuthentication";
 
-    this.state = {
-      authUser: null
-    }
-  }
+const App = () => (
+  <div>
+    <Navbar />
+    <Main />
+  </div>
+);
 
-  componentDidMount() {
-    firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        ? this.setState({ authUser })
-        : this.setState({ authUser: null });
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Navbar authUser={this.state.authUser} />
-        <Main authUser={this.state.authUser} />
-      </div>
-    )
-  }
-}
-
-export default App;
+export default withAuthentication(App);
