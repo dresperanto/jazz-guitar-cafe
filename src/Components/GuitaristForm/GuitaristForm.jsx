@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { db } from '../../firebase'
+import * as routes from '../constants/routes';
 
 class LessonForm extends Component {
   constructor(props) {
@@ -23,8 +24,10 @@ class LessonForm extends Component {
 
 
   addData = e => {
+    const { history } = this.props;
+
     e.preventDefault();
-    const newLesson = db.collection('guitarists').doc()
+    const newLesson = db.onceGetUser.doc()
 
     newLesson.set({
       // Set Id to Firestore Document Name
@@ -43,6 +46,7 @@ class LessonForm extends Component {
       website: '',
       description: ''
     });
+    history.push(routes.GUITARIST_LIST);
   };
 
 

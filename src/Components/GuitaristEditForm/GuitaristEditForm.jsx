@@ -63,13 +63,16 @@ class GuitaristEditForm extends Component {
       description: ''
     });
     history.push(routes.GUITARIST_LIST);
+
   };
 
 
 
   render() {
     return (
+
       <div className="ui raised very padded text container segment animated fadeIn" style={{ marginTop: "30px" }}>
+
         <header className="App-header">
           <h1>Edit</h1>
           <h3 className="App-title">{this.state.name}</h3>
